@@ -184,6 +184,11 @@ void fieldInverseFullReduce(Field* r, Field* f) {
   uint32_t    aCount, bCount, count=0, maxBits=31;
 
   fieldFullReduce(f);
+  if(fieldIsOne(f)) {
+      fieldSetR(r);
+      return;
+  }
+
   packedFieldFromField(&A, f);
   packedFieldSetN(&B);
 
